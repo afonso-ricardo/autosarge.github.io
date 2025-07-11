@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Organization Contacts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #111;
+            color: #f2f2f2;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 24px;
+            background: #222;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        .title {
+            font-size: 2em;
+            margin: 0;
+            color: #fafafa;
+        }
+        .intro-box {
+            background: #222;
+            border-left: 6px solid #2196f3;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        .contact-card {
+            background: #181818;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 18px;
+            border: 2px solid #222;
+            background: #222;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-info h2 {
+            margin: 0 0 8px;
+            font-size: 1.15em;
+            color: #fff;
+        }
+        .contact-info p {
+            margin: 4px 0;
+            color: #e0e0e0;
+        }
+        a {
+            color: #2196f3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width:600px) {
+            body { margin: 12px; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .logo { margin-bottom: 12px; margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" alt="Organization Logo" class="logo">
+        <h1 class="title">Organization Contacts</h1>
+    </div>
+    <div class="intro-box">
+        <p>
+            Welcome to our organization! We are committed to providing excellent services and support. 
+            Below you can find the contact details for key members of our team. 
+            Feel free to reach out to us by phone or email with any questions or requests.
+        </p>
+    </div>
+    <div class="contact-card">
+        <img src="images/jane.jpg" alt="Jane Doe">
+        <div class="contact-info">
+            <h2>Jane Doe</h2>
+            <p><strong>Role:</strong> Director</p>
+            <p><strong>Email:</strong> <a href="mailto:jane@example.com">jane@example.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+1234567890">+123 456 7890</a></p>
+        </div>
+    </div>
+    <div class="contact-card">
+        <img src="images/john.jpg" alt="John Smith">
+        <div class="contact-info">
+            <h2>John Smith</h2>
+            <p><strong>Role:</strong> Manager</p>
+            <p><strong>Email:</strong> <a href="mailto:john@example.com">john@example.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+1235551234">+123 555 1234</a></p>
+        </div>
+    </div>
+    <!-- Add more contacts as needed -->
+</body>
+</html>
