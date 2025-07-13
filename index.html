@@ -39,6 +39,55 @@
             margin-bottom: 32px;
             font-size: 1.35em;
         }
+        /* Car Showcase Styles */
+        .car-showcase {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .car-card {
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1rem;
+            width: 300px;
+            text-align: center;
+            background: #222;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .car-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .car-card img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 10px #2196f3;
+        }
+        .car-info {
+            margin-top: 1rem;
+        }
+        .car-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fafafa;
+            margin-bottom: 0.5rem;
+        }
+        .car-details {
+            font-size: 1rem;
+            color: #d0d0d0;
+        }
+        /* End Car Showcase Styles */
+        .stock-subtitle {
+            color: #fafafa;
+            font-size: 2em;
+            margin: 0 0 22px 0;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
         .contact-simple {
             background: #181818;
             border-radius: 8px;
@@ -58,10 +107,15 @@
         a:hover {
             text-decoration: underline;
         }
+        @media (max-width:900px) {
+            .car-showcase { flex-direction: column; align-items: center; }
+            .car-card { width: 90vw; max-width: 340px; }
+        }
         @media (max-width:600px) {
             body { margin: 12px; }
             .header { flex-direction: column; align-items: flex-start; }
             .logo { margin-bottom: 12px; margin-right: 0; }
+            .car-showcase { gap: 1rem; }
         }
     </style>
 </head>
@@ -78,6 +132,52 @@
             podemos o ajudar em aconselhamento especializado.
         </p>
     </div>
+    <!-- Stock Subtitle START -->
+    <div class="stock-subtitle">Carros no stock</div>
+    <!-- Stock Subtitle END -->
+    <!-- Car Showcase Section START -->
+    <div class="car-showcase">
+        <div class="car-card">
+            <a href="https://example.com/car1" target="_blank">
+                <img src="images/car1.jpg" alt="Carro 1">
+            </a>
+            <div class="car-info">
+                <div class="car-title">placeholder:car name</div>
+                <div class="car-details">
+                    Preço: €20,000<br>
+                    Quilometragem: 15,000 km<br>
+                    Cor: Azul
+                </div>
+            </div>
+        </div>
+        <div class="car-card">
+            <a href="https://example.com/car2" target="_blank">
+                <img src="images/car2.jpg" alt="Carro 2">
+            </a>
+            <div class="car-info">
+                <div class="car-title">placeholder:car name</div>
+                <div class="car-details">
+                    Preço: €18,000<br>
+                    Quilometragem: 10,000 km<br>
+                    Cor: Vermelho
+                </div>
+            </div>
+        </div>
+        <div class="car-card">
+            <a href="https://example.com/car3" target="_blank">
+                <img src="images/car3.jpg" alt="Carro 3">
+            </a>
+            <div class="car-info">
+                <div class="car-title">placeholder:car name</div>
+                <div class="car-details">
+                    Preço: €15,000<br>
+                    Quilometragem: 25,000 km<br>
+                    Cor: Branco
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Car Showcase Section END -->
     <h2 style="color: #fafafa; margin-top: 0; margin-bottom: 18px;">Contatos</h2>
     <div class="contact-simple">
         <p><strong>Telemóvel 1:</strong> <a href="tel:+1234567890">+351 912 251 080</a></p>
