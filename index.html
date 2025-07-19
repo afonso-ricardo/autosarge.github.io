@@ -1,266 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Auto Sarge</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background: #111;
-            color: #f2f2f2;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-        .logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            margin-right: 24px;
-            background: #222;
-            border-radius: 8px;
-            border: 1px solid #333;
-        }
-        .title {
-            font-size: 3.5em;
-            margin: 0;
-            color: #fafafa;
-        }
-        .intro-box {
-            background: #222;
-            border-left: 6px solid #f44336;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.22);
-            padding: 24px;
-            margin-bottom: 32px;
-            font-size: 1.35em;
-        }
-        .car-showcase {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-        .car-card {
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 1rem;
-            width: 300px;
-            text-align: center;
-            background: #222;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-        }
-        .car-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .car-card img:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 10px #2196f3;
-        }
-        .car-info {
-            margin-top: 1rem;
-        }
-        .car-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #fafafa;
-            margin-bottom: 0.5rem;
-        }
-        /* Emphasized price */
-        .car-price {
-            display: inline-block;
-            font-size: 1.7em;
-            font-weight: bold;
-            color: #f44336;
-            margin-bottom: 0.7em;
-            background: #181818;
-            border-radius: 6px;
-            padding: 4px 16px;
-            box-shadow: 0 2px 8px rgba(244,67,54,0.15);
-        }
-        /* Subtle but highlighted details */
-        .car-details {
-            font-size: 1rem;
-            margin-top: 0.7em;
-            display: inline-block;
-            background: #232323;
-            border-radius: 8px;
-            padding: 10px 18px 10px 18px;
-            font-weight: 500;
-            box-shadow: 0 1px 6px rgba(33,150,243,0.09);
-            letter-spacing: 0.5px;
-            text-align: left;
-            color: #d3d6db; /* neutral light gray */
-        }
-        .car-details span {
-            display: block;
-            margin: 5px 0;
-            color: #d3d6db; /* keep neutral for all details */
-            font-size: 1.04em;
-        }
-        .car-details strong {
-            color: #b0b3b8; /* slightly darker neutral for labels */
-            font-weight: bold;
-            margin-right: 4px;
-        }
-        .stock-subtitle {
-            color: #fafafa;
-            font-size: 2em;
-            margin: 0 0 22px 0;
-            text-align: center;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        .contact-simple {
-            background: #181818;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-            padding: 22px 26px;
-            margin-bottom: 24px;
-            color: #fafafa;
-            font-size: 1.25em;
-        }
-        .contact-simple p {
-            margin: 10px 0;
-        }
-        a {
-            color: #2196f3;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        /* Discreet Hint Styles */
-        .click-hint {
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .click-hint span {
-            color: #fafafa;
-            opacity: 0.68;
-            font-size: 1em;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        @media (max-width:900px) {
-            .car-showcase { flex-direction: column; align-items: center; }
-            .car-card { width: 90vw; max-width: 340px; }
-        }
-        @media (max-width:600px) {
-            body { margin: 12px; }
-            .header { flex-direction: column; align-items: flex-start; }
-            .logo { margin-bottom: 12px; margin-right: 0; }
-            .car-showcase { gap: 1rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Auto Sarge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #111;
+      color: #f2f2f2;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-right: 24px;
+      background: #222;
+      border-radius: 8px;
+      border: 1px solid #333;
+    }
+
+    .title {
+      font-size: 3.5em;
+      margin: 0;
+      color: #fafafa;
+    }
+
+    .intro-box {
+      background: #222;
+      border-left: 6px solid #f44336;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+      padding: 24px;
+      margin-bottom: 32px;
+      font-size: 1.35em;
+    }
+
+    .car-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .car-card {
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      background: #222;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+
+    .car-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .car-card img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 10px #2196f3;
+    }
+
+    .car-info {
+      margin-top: 1rem;
+    }
+
+    .car-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fafafa;
+      margin-bottom: 0.5rem;
+    }
+
+    .car-price {
+      display: inline-block;
+      font-size: 1.7em;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 0.7em;
+      background: #181818;
+      border-radius: 6px;
+      padding: 4px 16px;
+      box-shadow: 0 2px 8px rgba(255,255,255,0.15);
+    }
+
+    .car-details {
+      font-size: 1rem;
+      margin-top: 0.7em;
+      display: inline-block;
+      background: #232323;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-weight: 500;
+      box-shadow: 0 1px 6px rgba(33,150,243,0.09);
+      letter-spacing: 0.5px;
+      text-align: left;
+      color: #d3d6db;
+    }
+
+    .car-details span {
+      display: block;
+      margin: 5px 0;
+      font-size: 1.04em;
+    }
+
+    .car-details strong {
+      color: #b0b3b8;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+
+    .stock-subtitle {
+      color: #fafafa;
+      font-size: 2em;
+      margin: 0 0 22px 0;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .contact-simple {
+      background: #181818;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      padding: 22px 26px;
+      margin-bottom: 24px;
+      color: #fafafa;
+      font-size: 1.25em;
+    }
+
+    .contact-simple p {
+      margin: 10px 0;
+    }
+
+    a {
+      color: #2196f3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .click-hint {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .click-hint span {
+      color: #fafafa;
+      opacity: 0.68;
+      font-size: 1em;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    @media (max-width:900px) {
+      .car-showcase { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width:600px) {
+      body { margin: 12px; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .logo { margin-bottom: 12px; margin-right: 0; }
+      .car-showcase { gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <img src="images/logo.png" alt="Organization Logo" class="logo">
-        <h1 class="title">Auto Sarge</h1>
-    </div>
-    <div class="intro-box">
-        <p>
-            Autosarge uma empresa que se dedica à mais de 30 anos ao comercio de viaturas usadas, 
-            onde o foco é o atendimento de excelência e a completa satisfação do cliente. 
-            Não hesite em nos contactar a saber do nosso stock e caso pretenda somente vender a sua viatura, 
-            podemos o ajudar em aconselhamento especializado.
-        </p>
-    </div>
-    <!-- Stock Subtitle START -->
-    <div class="stock-subtitle">Carros no stock</div>
-    <!-- Discreet Hint START -->
-    <div class="click-hint">
-        <span>🔍 Clique numa imagem para ver mais detalhes sobre o carro.</span>
-    </div>
-    <!-- Discreet Hint END -->
-    <!-- Stock Subtitle END -->
-    <!-- Car Showcase Section START -->
-    <div class="car-showcase">
-        <div class="car-card">
-            <a href="https://www.standvirtual.com/carros/anuncio/ford-fiesta-ver-1-25-trend-ID8PSj6T.html?_gl=1*1rabvrf*_gcl_au*NzgxOTkwMjU2LjE3NTIyNzEzNjU.*_ga*OTkxNTYxNTA0LjE3NTIyNzEzNjU.*_ga_L97YMG[...]" target="_blank">
-                <img src="images/car1.jpg" alt="Carro 1">
-            </a>
-            <div class="car-info">
-                <div class="car-title">Ford Fiesta 1.25 Trend</div>
-                <span class="car-price">3.590€</span>
-                <div class="car-details">
-                    <span><strong>Quilometragem:</strong> 140 677 km</span>
-                    <span><strong>Ano:</strong> 2006</span>
-                </div>
-            </div>
-        </div>
-        <div class="car-card">
-            <a href="https://example.com/car2" target="_blank">
-                <img src="images/car2.jpg" alt="Carro 2">
-            </a>
-            <div class="car-info">
-                <div class="car-title">placeholder:car name</div>
-                <span class="car-price">€18,000</span>
-                <div class="car-details">
-                    <span><strong>Quilometragem:</strong> 10,000 km</span>
-                    <span><strong>Cor:</strong> Vermelho</span>
-                </div>
-            </div>
-        </div>
-        <div class="car-card">
-            <a href="https://example.com/car3" target="_blank">
-                <img src="images/car3.jpg" alt="Carro 3">
-            </a>
-            <div class="car-info">
-                <div class="car-title">placeholder:car name</div>
-                <span class="car-price">€15,000</span>
-                <div class="car-details">
-                    <span><strong>Quilometragem:</strong> 25,000 km</span>
-                    <span><strong>Cor:</strong> Branco</span>
-                </div>
-            </div>
-        </div>
-        <!-- Added car slot 4 -->
-        <div class="car-card">
-            <a href="https://example.com/car4" target="_blank">
-                <img src="images/car4.jpg" alt="Carro 4">
-            </a>
-            <div class="car-info">
-                <div class="car-title">placeholder:car name</div>
-                <span class="car-price">€22,000</span>
-                <div class="car-details">
-                    <span><strong>Quilometragem:</strong> 12,000 km</span>
-                    <span><strong>Cor:</strong> Preto</span>
-                </div>
-            </div>
-        </div>
-        <!-- Added car slot 5 -->
-        <div class="car-card">
-            <a href="https://example.com/car5" target="_blank">
-                <img src="images/car5.jpg" alt="Carro 5">
-            </a>
-            <div class="car-info">
-                <div class="car-title">placeholder:car name</div>
-                <span class="car-price">€25,000</span>
-                <div class="car-details">
-                    <span><strong>Quilometragem:</strong> 8,500 km</span>
-                    <span><strong>Cor:</strong> Cinzento</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Car Showcase Section END -->
-    <h2 style="color: #fafafa; margin-top: 0; margin-bottom: 18px;">Contatos</h2>
-    <div class="contact-simple">
-        <p><strong>Telemóvel 1:</strong> <a href="tel:+1234567890">+351 912 251 080</a></p>
-        <p><strong>Telemóvel 2:</strong> <a href="tel:+1235551234">+351 918 754 848</a></p>
-        <p><strong>Email:</strong> <a href="mailto:info@autosarge.com">autosarge2005@gmail.com</a></p>
-    </div>
-    <!-- Add more contacts as needed -->
+  <div class="header">
+    <img src="images/logo.png" alt="Organization Logo" class="logo">
+    <h1 class="title">Auto Sarge</h1>
+  </div>
+
+  <div class="intro-box">
+    <p>
+      Autosarge uma empresa que se dedica à mais de 30 anos ao comercio de viaturas usadas, 
+      onde o foco é o atendimento de excelência e a completa satisfação do cliente. 
+      Não hesite em nos contactar a saber do nosso stock e caso pretenda somente vender a sua viatura, 
+      podemos o ajudar em aconselhamento especializado.
+    </p>
+  </div>
+
+  <div class="stock-subtitle">Carros no stock</div>
+
+  <div class="click-hint">
+    <span>🔍 Clique numa imagem para ver mais detalhes sobre o carro.</span>
+  </div>
+
+  <div class="car-showcase">
+    <!-- Existing cars (5) -->
+    <div class="car-card"><a href="#"><img src="images/car1.jpg" alt="Carro 1"></a><div class="car-info"><div class="car-title">Ford Fiesta 1.25 Trend</div><span class="car-price">3.590€</span><div class="car-details"><span><strong>Quilometragem:</strong> 140 677 km</span><span><strong>Ano:</strong> 2006</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car2.jpg" alt="Carro 2"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€18,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 10,000 km</span><span><strong>Cor:</strong> Vermelho</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car3.jpg" alt="Carro 3"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€15,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 25,000 km</span><span><strong>Cor:</strong> Branco</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car4.jpg" alt="Carro 4"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€22,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 12,000 km</span><span><strong>Cor:</strong> Preto</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car5.jpg" alt="Carro 5"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€25,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 8,500 km</span><span><strong>Cor:</strong> Cinzento</span></div></div></div>
+
+    <!-- New cars (4) -->
+    <div class="car-card"><a href="#"><img src="images/car6.jpg" alt="Carro 6"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€19,500</span><div class="car-details"><span><strong>Quilometragem:</strong> 18,000 km</span><span><strong>Cor:</strong> Azul</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car7.jpg" alt="Carro 7"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€14,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 40,000 km</span><span><strong>Cor:</strong> Verde</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car8.jpg" alt="Carro 8"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€21,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 9,000 km</span><span><strong>Cor:</strong> Branco</span></div></div></div>
+    <div class="car-card"><a href="#"><img src="images/car9.jpg" alt="Carro 9"></a><div class="car-info"><div class="car-title">placeholder:car name</div><span class="car-price">€11,000</span><div class="car-details"><span><strong>Quilometragem:</strong> 60,000 km</span><span><strong>Cor:</strong> Preto</span></div></div></div>
+  </div>
+
+  <h2 style="color: #fafafa; margin-top: 0; margin-bottom: 18px;">Contatos</h2>
+
+  <div class="contact-simple">
+    <p><strong>Telemóvel 1:</strong> <a href="tel:+351912251080">+351 912 251 080</a></p>
+    <p><strong>Telemóvel 2:</strong> <a href="tel:+351918754848">+351 918 754 848</a></p>
+    <p><strong>Email:</strong> <a href="mailto:autosarge2005@gmail.com">autosarge2005@gmail.com</a></p>
+  </div>
 </body>
 </html>
