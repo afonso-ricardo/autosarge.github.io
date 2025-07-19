@@ -74,8 +74,9 @@
     }
 
     .carousel-slide img {
-      max-width: 100%;
-      height: auto;
+      width: 600px;      /* fixed width */
+      height: 375px;     /* fixed height */
+      object-fit: cover; /* keep aspect ratio and crop */
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
@@ -212,8 +213,10 @@
     }
 
     .car-card img {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      object-fit: cover;
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
@@ -277,105 +280,11 @@
   </div>
 
   <div class="carousel-container" aria-label="Carros em destaque">
-    <!-- Slide 1 -->
-    <div class="carousel-slide active">
-      <a href="#"><img src="images/car1.jpg" alt="Ford Fiesta 1.25 Trend" /></a>
-      <div class="car-title">Ford Fiesta 1.25 Trend</div>
-      <div class="car-price">3.590€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 140 677 km</span>
-        <span><strong>Ano:</strong> 2006</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car2.jpg" alt="Carro 2" /></a>
-      <div class="car-title">Opel Astra 1.7 CDTi Cosmo</div>
-      <div class="car-price">5.890€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 239 400 km</span>
-        <span><strong>Ano:</strong> 2011</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car3.jpg" alt="Carro 3" /></a>
-      <div class="car-title">Renault Mégane 1.5 dCi Dynamique</div>
-      <div class="car-price">3.490€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 199 989 km</span>
-        <span><strong>Ano:</strong> 2005</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 4 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car4.jpg" alt="Carro 4" /></a>
-      <div class="car-title">MINI 3 Portas One 1.4 D</div>
-      <div class="car-price">4.790€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 343 211 km</span>
-        <span><strong>Ano:</strong> 2004</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 5 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car5.jpg" alt="Carro 5" /></a>
-      <div class="car-title">Carro 5</div>
-      <div class="car-price">25.000€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 8.500 km</span>
-        <span><strong>Ano:</strong> 2020</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 6 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car6.jpg" alt="Carro 6" /></a>
-      <div class="car-title">Carro 6</div>
-      <div class="car-price">19.500€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 18.000 km</span>
-        <span><strong>Ano:</strong> 2016</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 7 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car7.jpg" alt="Carro 7" /></a>
-      <div class="car-title">Carro 7</div>
-      <div class="car-price">14.000€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 40.000 km</span>
-        <span><strong>Ano:</strong> 2015</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <!-- Slide 8 -->
-    <div class="carousel-slide">
-      <a href="#"><img src="images/car8.jpg" alt="Carro 8" /></a>
-      <div class="car-title">Carro 8</div>
-      <div class="car-price">21.000€</div>
-      <div class="car-details">
-        <span><strong>Quilómetros:</strong> 9.000 km</span>
-        <span><strong>Ano:</strong> 2017</span>
-        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-      </div>
-    </div>
-
-    <button class="carousel-arrow left" aria-label="Carro anterior">&#10094;</button>
-    <button class="carousel-arrow right" aria-label="Próximo carro">&#10095;</button>
+    <!-- Carousel slides will be generated here -->
   </div>
+
+  <button class="carousel-arrow left" aria-label="Carro anterior">&#10094;</button>
+  <button class="carousel-arrow right" aria-label="Próximo carro">&#10095;</button>
 
   <div class="stock-subtitle">Carros no stock</div>
 
@@ -384,110 +293,7 @@
   </div>
 
   <div class="car-showcase">
-    <!-- Showcase cars with consistent details -->
-    <div class="car-card">
-      <a href="#"><img src="images/car1.jpg" alt="Ford Fiesta 1.25 Trend" /></a>
-      <div class="car-info">
-        <div class="car-title">Ford Fiesta 1.25 Trend</div>
-        <span class="car-price">3.590€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 140 677 km</span>
-          <span><strong>Ano:</strong> 2006</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car2.jpg" alt="Carro 2" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 2</div>
-        <span class="car-price">18.000€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 10.000 km</span>
-          <span><strong>Ano:</strong> 2018</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car3.jpg" alt="Carro 3" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 3</div>
-        <span class="car-price">15.000€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 25.000 km</span>
-          <span><strong>Ano:</strong> 2017</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car4.jpg" alt="Carro 4" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 4</div>
-        <span class="car-price">22.000€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 12.000 km</span>
-          <span><strong>Ano:</strong> 2019</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car5.jpg" alt="Carro 5" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 5</div>
-        <span class="car-price">25.000€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 8.500 km</span>
-          <span><strong>Ano:</strong> 2020</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car6.jpg" alt="Carro 6" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 6</div>
-        <span class="car-price">19.500€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 18.000 km</span>
-          <span><strong>Ano:</strong> 2016</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car7.jpg" alt="Carro 7" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 7</div>
-        <span class="car-price">14.000€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 40.000 km</span>
-          <span><strong>Ano:</strong> 2015</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="car-card">
-      <a href="#"><img src="images/car8.jpg" alt="Carro 8" /></a>
-      <div class="car-info">
-        <div class="car-title">Carro 8</div>
-        <span class="car-price">21.000€</span>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> 9.000 km</span>
-          <span><strong>Ano:</strong> 2017</span>
-          <span>Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
-        </div>
-      </div>
-    </div>
+    <!-- Car cards will be generated here -->
   </div>
 
   <h2 style="color: #fafafa; margin-top: 0; margin-bottom: 18px;">Contatos</h2>
@@ -499,6 +305,128 @@
   </div>
 
   <script>
+    // Single source of data for all cars
+    const cars = [
+      {
+        title: "Ford Fiesta 1.25 Trend",
+        price: "3.590€",
+        kms: "140 677 km",
+        year: "2006",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car1.jpg",
+        link: "#"
+      },
+      {
+        title: "Opel Astra 1.7 CDTi Cosmo",
+        price: "5.890€",
+        kms: "239 400 km",
+        year: "2011",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car2.jpg",
+        link: "#"
+      },
+      {
+        title: "Renault Mégane 1.5 dCi Dynamique",
+        price: "3.490€",
+        kms: "199 989 km",
+        year: "2005",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car3.jpg",
+        link: "#"
+      },
+      {
+        title: "MINI 3 Portas One 1.4 D",
+        price: "4.790€",
+        kms: "343 211 km",
+        year: "2004",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car4.jpg",
+        link: "#"
+      },
+      {
+        title: "Carro 5",
+        price: "25.000€",
+        kms: "8.500 km",
+        year: "2020",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car5.jpg",
+        link: "#"
+      },
+      {
+        title: "Carro 6",
+        price: "19.500€",
+        kms: "18.000 km",
+        year: "2016",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car6.jpg",
+        link: "#"
+      },
+      {
+        title: "Carro 7",
+        price: "14.000€",
+        kms: "40.000 km",
+        year: "2015",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car7.jpg",
+        link: "#"
+      },
+      {
+        title: "Carro 8",
+        price: "21.000€",
+        kms: "9.000 km",
+        year: "2017",
+        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
+        image: "images/car8.jpg",
+        link: "#"
+      },
+    ];
+
+    // Select containers
+    const carouselContainer = document.querySelector('.carousel-container');
+    const carShowcase = document.querySelector('.car-showcase');
+
+    // Generate carousel slides
+    cars.forEach((car, index) => {
+      const slide = document.createElement('div');
+      slide.classList.add('carousel-slide');
+      if(index === 0) slide.classList.add('active');
+      slide.innerHTML = `
+        <a href="${car.link}">
+          <img src="${car.image}" alt="${car.title}" />
+        </a>
+        <div class="car-title">${car.title}</div>
+        <div class="car-price">${car.price}</div>
+        <div class="car-details">
+          <span><strong>Quilómetros:</strong> ${car.kms}</span>
+          <span><strong>Ano:</strong> ${car.year}</span>
+          <span class="extras">${car.extras}</span>
+        </div>
+      `;
+      carouselContainer.appendChild(slide);
+    });
+
+    // Generate car cards
+    cars.forEach(car => {
+      const card = document.createElement('div');
+      card.classList.add('car-card');
+      card.innerHTML = `
+        <a href="${car.link}">
+          <img src="${car.image}" alt="${car.title}" />
+        </a>
+        <div class="car-info">
+          <div class="car-title">${car.title}</div>
+          <span class="car-price">${car.price}</span>
+          <div class="car-details">
+            <span><strong>Quilómetros:</strong> ${car.kms}</span>
+            <span><strong>Ano:</strong> ${car.year}</span>
+            <span>${car.extras}</span>
+          </div>
+        </div>
+      `;
+      carShowcase.appendChild(card);
+    });
+
+    // Carousel navigation logic
     const slides = document.querySelectorAll('.carousel-slide');
     const prevBtn = document.querySelector('.carousel-arrow.left');
     const nextBtn = document.querySelector('.carousel-arrow.right');
