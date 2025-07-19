@@ -39,7 +39,6 @@
             margin-bottom: 32px;
             font-size: 1.35em;
         }
-        /* Car Showcase Styles */
         .car-showcase {
             display: flex;
             gap: 2rem;
@@ -75,11 +74,43 @@
             color: #fafafa;
             margin-bottom: 0.5rem;
         }
+        /* Emphasized price */
+        .car-price {
+            display: inline-block;
+            font-size: 1.7em;
+            font-weight: bold;
+            color: #f44336;
+            margin-bottom: 0.7em;
+            background: #181818;
+            border-radius: 6px;
+            padding: 4px 16px;
+            box-shadow: 0 2px 8px rgba(244,67,54,0.15);
+        }
+        /* Subtle but highlighted details */
         .car-details {
             font-size: 1rem;
-            color: #d0d0d0;
+            margin-top: 0.7em;
+            display: inline-block;
+            background: #232323;
+            border-radius: 8px;
+            padding: 10px 18px 10px 18px;
+            font-weight: 500;
+            box-shadow: 0 1px 6px rgba(33,150,243,0.09);
+            letter-spacing: 0.5px;
+            text-align: left;
+            color: #d3d6db; /* neutral light gray */
         }
-        /* End Car Showcase Styles */
+        .car-details span {
+            display: block;
+            margin: 5px 0;
+            color: #d3d6db; /* keep neutral for all details */
+            font-size: 1.04em;
+        }
+        .car-details strong {
+            color: #b0b3b8; /* slightly darker neutral for labels */
+            font-weight: bold;
+            margin-right: 4px;
+        }
         .stock-subtitle {
             color: #fafafa;
             font-size: 2em;
@@ -156,15 +187,15 @@
     <!-- Car Showcase Section START -->
     <div class="car-showcase">
         <div class="car-card">
-            <a href="https://www.standvirtual.com/carros/anuncio/ford-fiesta-ver-1-25-trend-ID8PSj6T.html?_gl=1*1rabvrf*_gcl_au*NzgxOTkwMjU2LjE3NTIyNzEzNjU.*_ga*OTkxNTYxNTA0LjE3NTIyNzEzNjU.*_ga_L97YMG[...]">
+            <a href="https://www.standvirtual.com/carros/anuncio/ford-fiesta-ver-1-25-trend-ID8PSj6T.html?_gl=1*1rabvrf*_gcl_au*NzgxOTkwMjU2LjE3NTIyNzEzNjU.*_ga*OTkxNTYxNTA0LjE3NTIyNzEzNjU.*_ga_L97YMG[...]" target="_blank">
                 <img src="images/car1.jpg" alt="Carro 1">
             </a>
             <div class="car-info">
                 <div class="car-title">Ford Fiesta 1.25 Trend</div>
+                <span class="car-price">3.590€</span>
                 <div class="car-details">
-                    Preço: 3590€<br>
-                    Quilometragem: 140 677 km<br>
-                    Ano: 2006
+                    <span><strong>Quilometragem:</strong> 140 677 km</span>
+                    <span><strong>Ano:</strong> 2006</span>
                 </div>
             </div>
         </div>
@@ -174,10 +205,10 @@
             </a>
             <div class="car-info">
                 <div class="car-title">placeholder:car name</div>
+                <span class="car-price">€18,000</span>
                 <div class="car-details">
-                    Preço: €18,000<br>
-                    Quilometragem: 10,000 km<br>
-                    Cor: Vermelho
+                    <span><strong>Quilometragem:</strong> 10,000 km</span>
+                    <span><strong>Cor:</strong> Vermelho</span>
                 </div>
             </div>
         </div>
@@ -187,10 +218,10 @@
             </a>
             <div class="car-info">
                 <div class="car-title">placeholder:car name</div>
+                <span class="car-price">€15,000</span>
                 <div class="car-details">
-                    Preço: €15,000<br>
-                    Quilometragem: 25,000 km<br>
-                    Cor: Branco
+                    <span><strong>Quilometragem:</strong> 25,000 km</span>
+                    <span><strong>Cor:</strong> Branco</span>
                 </div>
             </div>
         </div>
@@ -201,10 +232,10 @@
             </a>
             <div class="car-info">
                 <div class="car-title">placeholder:car name</div>
+                <span class="car-price">€22,000</span>
                 <div class="car-details">
-                    Preço: €22,000<br>
-                    Quilometragem: 12,000 km<br>
-                    Cor: Preto
+                    <span><strong>Quilometragem:</strong> 12,000 km</span>
+                    <span><strong>Cor:</strong> Preto</span>
                 </div>
             </div>
         </div>
@@ -215,10 +246,10 @@
             </a>
             <div class="car-info">
                 <div class="car-title">placeholder:car name</div>
+                <span class="car-price">€25,000</span>
                 <div class="car-details">
-                    Preço: €25,000<br>
-                    Quilometragem: 8,500 km<br>
-                    Cor: Cinzento
+                    <span><strong>Quilometragem:</strong> 8,500 km</span>
+                    <span><strong>Cor:</strong> Cinzento</span>
                 </div>
             </div>
         </div>
