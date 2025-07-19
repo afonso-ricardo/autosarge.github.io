@@ -5,13 +5,15 @@
   <title>Auto Sarge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* Background from your link - subtle dark gradient with pattern */
     body {
       font-family: Arial, sans-serif;
       margin: 40px;
-      background: linear-gradient(135deg, #111 0%, #222 100%);
-      background-image: url('https://designergpt.replit.app/assets/texture-7aef4a5a.png'); /* pattern from link */
-      background-repeat: repeat;
+      background-image: 
+        url('https://designergpt.replit.app/assets/texture-7aef4a5a.png'),
+        linear-gradient(135deg, #111 0%, #222 100%);
+      background-repeat: repeat, no-repeat;
+      background-size: auto, cover;
+      background-position: top left, center;
       color: #f2f2f2;
     }
 
@@ -47,18 +49,17 @@
       font-size: 1.35em;
     }
 
-    /* Carousel container */
     .carousel-container {
       position: relative;
       max-width: 800px;
-      margin: 2rem auto;
+      margin: 3rem auto 4rem;
       background: #222;
       border-radius: 12px;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
       overflow: hidden;
+      padding: 2rem 1.5rem;
     }
 
-    /* Carousel items */
     .carousel-slide {
       display: none;
       text-align: center;
@@ -115,6 +116,7 @@
       color: #d3d6db;
       max-width: 400px;
       margin: 0 auto;
+      line-height: 1.4;
     }
 
     .car-details span {
@@ -129,7 +131,14 @@
       margin-right: 6px;
     }
 
-    /* Carousel arrows */
+    /* Italic style for extras line */
+    .car-details .extras {
+      font-style: italic;
+      font-size: 0.95em;
+      color: #a0a3a8;
+      margin-top: 10px;
+    }
+
     .carousel-arrow {
       position: absolute;
       top: 50%;
@@ -263,56 +272,64 @@
     </p>
   </div>
 
-  <!-- Carousel here -->
   <div class="carousel-container" aria-label="Carros em destaque">
-    <!-- Each slide is one car -->
+    <!-- Slide 1 -->
     <div class="carousel-slide active">
       <a href="#"><img src="images/car1.jpg" alt="Ford Fiesta 1.25 Trend" /></a>
       <div class="car-title">Ford Fiesta 1.25 Trend</div>
       <div class="car-price">3.590€</div>
       <div class="car-details">
-        <span><strong>Quilometragem:</strong> 140 677 km</span>
+        <span><strong>Quilómetros:</strong> 140 677 km</span>
         <span><strong>Ano:</strong> 2006</span>
+        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
       </div>
     </div>
 
+    <!-- Slide 2 -->
     <div class="carousel-slide">
       <a href="#"><img src="images/car2.jpg" alt="Carro 2" /></a>
       <div class="car-title">placeholder:car name</div>
       <div class="car-price">€18,000</div>
       <div class="car-details">
-        <span><strong>Quilometragem:</strong> 10,000 km</span>
-        <span><strong>Cor:</strong> Vermelho</span>
+        <span><strong>Quilómetros:</strong> 10,000 km</span>
+        <span><strong>Ano:</strong> 2018</span>
+        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
       </div>
     </div>
 
+    <!-- Slide 3 -->
     <div class="carousel-slide">
       <a href="#"><img src="images/car3.jpg" alt="Carro 3" /></a>
       <div class="car-title">placeholder:car name</div>
       <div class="car-price">€15,000</div>
       <div class="car-details">
-        <span><strong>Quilometragem:</strong> 25,000 km</span>
-        <span><strong>Cor:</strong> Branco</span>
+        <span><strong>Quilómetros:</strong> 25,000 km</span>
+        <span><strong>Ano:</strong> 2017</span>
+        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
       </div>
     </div>
 
+    <!-- Slide 4 -->
     <div class="carousel-slide">
       <a href="#"><img src="images/car4.jpg" alt="Carro 4" /></a>
       <div class="car-title">placeholder:car name</div>
       <div class="car-price">€22,000</div>
       <div class="car-details">
-        <span><strong>Quilometragem:</strong> 12,000 km</span>
-        <span><strong>Cor:</strong> Preto</span>
+        <span><strong>Quilómetros:</strong> 12,000 km</span>
+        <span><strong>Ano:</strong> 2019</span>
+        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
       </div>
     </div>
 
+    <!-- Slide 5 -->
     <div class="carousel-slide">
       <a href="#"><img src="images/car5.jpg" alt="Carro 5" /></a>
       <div class="car-title">placeholder:car name</div>
       <div class="car-price">€25,000</div>
       <div class="car-details">
-        <span><strong>Quilometragem:</strong> 8,500 km</span>
-        <span><strong>Cor:</strong> Cinzento</span>
+        <span><strong>Quilómetros:</strong> 8,500 km</span>
+        <span><strong>Ano:</strong> 2020</span>
+        <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
       </div>
     </div>
 
@@ -327,15 +344,16 @@
   </div>
 
   <div class="car-showcase">
-    <!-- Your existing grid of cars (all 9 cars) -->
+    <!-- All cars with standardized details -->
     <div class="car-card">
       <a href="#"><img src="images/car1.jpg" alt="Carro 1" /></a>
       <div class="car-info">
         <div class="car-title">Ford Fiesta 1.25 Trend</div>
         <span class="car-price">3.590€</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 140 677 km</span>
+          <span><strong>Quilómetros:</strong> 140 677 km</span>
           <span><strong>Ano:</strong> 2006</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -345,8 +363,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€18,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 10,000 km</span>
-          <span><strong>Cor:</strong> Vermelho</span>
+          <span><strong>Quilómetros:</strong> 10,000 km</span>
+          <span><strong>Ano:</strong> 2018</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -356,8 +375,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€15,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 25,000 km</span>
-          <span><strong>Cor:</strong> Branco</span>
+          <span><strong>Quilómetros:</strong> 25,000 km</span>
+          <span><strong>Ano:</strong> 2017</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -367,8 +387,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€22,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 12,000 km</span>
-          <span><strong>Cor:</strong> Preto</span>
+          <span><strong>Quilómetros:</strong> 12,000 km</span>
+          <span><strong>Ano:</strong> 2019</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -378,8 +399,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€25,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 8,500 km</span>
-          <span><strong>Cor:</strong> Cinzento</span>
+          <span><strong>Quilómetros:</strong> 8,500 km</span>
+          <span><strong>Ano:</strong> 2020</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -389,8 +411,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€19,500</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 18,000 km</span>
-          <span><strong>Cor:</strong> Azul</span>
+          <span><strong>Quilómetros:</strong> 18,000 km</span>
+          <span><strong>Ano:</strong> 2016</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -400,8 +423,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€14,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 40,000 km</span>
-          <span><strong>Cor:</strong> Verde</span>
+          <span><strong>Quilómetros:</strong> 40,000 km</span>
+          <span><strong>Ano:</strong> 2015</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -411,8 +435,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€21,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 9,000 km</span>
-          <span><strong>Cor:</strong> Branco</span>
+          <span><strong>Quilómetros:</strong> 9,000 km</span>
+          <span><strong>Ano:</strong> 2017</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
@@ -422,8 +447,9 @@
         <div class="car-title">placeholder:car name</div>
         <span class="car-price">€11,000</span>
         <div class="car-details">
-          <span><strong>Quilometragem:</strong> 60,000 km</span>
-          <span><strong>Cor:</strong> Preto</span>
+          <span><strong>Quilómetros:</strong> 60,000 km</span>
+          <span><strong>Ano:</strong> 2014</span>
+          <span class="extras">Vários extras sob consulta (Clique na imagem para ver mais detalhes)</span>
         </div>
       </div>
     </div>
