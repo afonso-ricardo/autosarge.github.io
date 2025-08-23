@@ -53,12 +53,15 @@
     .carousel-container {
       position: relative;
       max-width: 800px;
+      width: 100%;
       margin: 3rem auto 4rem;
       background: #222;
       border-radius: 12px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.6);
       overflow: hidden;
       padding: 2rem 1.5rem;
+      box-sizing: border-box;
+      /* Prevent horizontal overflow */
     }
 
     .carousel-slide {
@@ -67,6 +70,7 @@
       padding: 1rem;
       color: #fafafa;
       transition: opacity 0.5s ease;
+      position: relative;
     }
 
     .carousel-slide.active {
@@ -74,13 +78,18 @@
     }
 
     .carousel-slide img {
-      width: 600px;      /* fixed width */
-      height: 375px;     /* fixed height */
-      object-fit: cover; /* keep aspect ratio and crop */
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      max-height: 375px;
+      object-fit: cover;
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .carousel-slide img:hover {
@@ -141,7 +150,7 @@
       margin-top: 10px;
     }
 
-    /* Arrows */
+    /* Carousel navigation arrows: CLOSER to image, properly centered vertically */
     .carousel-arrow {
       position: absolute;
       top: 50%;
@@ -149,26 +158,29 @@
       background: rgba(33,150,243,0.7);
       border: none;
       color: #fff;
-      font-size: 1.6rem;
+      font-size: 2em;
       padding: 8px 14px;
       border-radius: 50%;
       cursor: pointer;
       user-select: none;
       transition: background 0.3s;
       box-shadow: 0 0 6px rgba(33,150,243,0.9);
-      z-index: 10;
-    }
-
-    .carousel-arrow:hover {
-      background: #2196f3;
+      z-index: 20;
+      margin-top: 0;
+      /* Overlay image edge */
     }
 
     .carousel-arrow.left {
-      left: 12px;
+      left: 5%;
     }
 
     .carousel-arrow.right {
-      right: 12px;
+      right: 5%;
+    }
+
+    /* Make sure arrows overlay image, not outside carousel */
+    .carousel-container {
+      position: relative;
     }
 
     .stock-subtitle {
@@ -212,14 +224,11 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
 
-    .car-card img {
+    /* Car image slider for grid cards (smaller image) */
+    .car-card .car-image-slider img {
+      height: 250px;
       width: 100%;
       max-width: 400px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .car-card img:hover {
@@ -244,11 +253,24 @@
       .car-showcase {
         grid-template-columns: 1fr;
       }
+      .carousel-container {
+        max-width: 100vw;
+      }
+      .carousel-slide img {
+        max-width: 100vw;
+        height: auto;
+        max-height: 200px;
+      }
+      .carousel-arrow.left,
+      .carousel-arrow.right {
+        font-size: 2em;
+        padding: 8px 12px;
+      }
     }
 
     @media (max-width: 600px) {
       body {
-        margin: 12px;
+        margin: 8px;
       }
       .header {
         flex-direction: column;
@@ -260,6 +282,26 @@
       }
       .car-showcase {
         gap: 1rem;
+      }
+      .carousel-container {
+        padding: 0.5rem 0.3rem;
+        max-width: 100vw;
+        border-radius: 8px;
+      }
+      .carousel-slide img {
+        max-width: 100vw;
+        width: 100vw;
+        height: auto;
+        max-height: 180px;
+        margin-bottom: 0.4em;
+      }
+      .carousel-arrow.left {
+        left: 10px;
+        font-size: 2em;
+      }
+      .carousel-arrow.right {
+        right: 10px;
+        font-size: 2em;
       }
     }
   </style>
@@ -280,11 +322,10 @@
   </div>
 
   <div class="carousel-container" aria-label="Carros em destaque">
+    <button class="carousel-arrow left" aria-label="Carro anterior">&#10094;</button>
+    <button class="carousel-arrow right" aria-label="Próximo carro">&#10095;</button>
     <!-- Carousel slides will be generated here -->
   </div>
-
-  <button class="carousel-arrow left" aria-label="Carro anterior">&#10094;</button>
-  <button class="carousel-arrow right" aria-label="Próximo carro">&#10095;</button>
 
   <div class="stock-subtitle">Carros no stock</div>
 
@@ -305,7 +346,7 @@
   </div>
 
   <script>
-    // Single source of data for all cars
+    // Cars data: "images" array for each car, first image is main image
     const cars = [
       {
         title: "Ford Fiesta 1.25 Trend",
@@ -313,7 +354,11 @@
         kms: "140 677 km",
         year: "2006",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car1.jpg",
+        images: [
+          "images/car1.jpg",
+          "images/ford_fiesta_extra1.jpg",
+          "images/ford_fiesta_extra2.jpg"
+        ],
         link: "https://www.standvirtual.com/carros/anuncio/ford-fiesta-ver-1-25-trend-ID8PSj6T.html?isPreview=1"
       },
       {
@@ -322,7 +367,7 @@
         kms: "239 400 km",
         year: "2011",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car2.jpg",
+        images: ["images/car2.jpg"],
         link: "https://www.standvirtual.com/carros/anuncio/opel-astra-ver-1-7-cdti-cosmo-ID8PSd30.html?isPreview=1"
       },
       {
@@ -331,7 +376,7 @@
         kms: "218 541 km",
         year: "2017",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car3.jpg",
+        images: ["images/car3.jpg"],
         link: "https://www.standvirtual.com/comerciais/anuncio/peugeot-peugeot-partner-1-6-hdi-100-cv-3-lug-premier-automtica-ID8PNI32.html?isPreview=1"
       },
       {
@@ -340,7 +385,7 @@
         kms: "343 211 km",
         year: "2004",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car4.jpg",
+        images: ["images/car4.jpg"],
         link: "https://www.standvirtual.com/carros/anuncio/mini-mini-3p-ver-1-4-d-ID8PSt7x.html?isPreview=1"
       },
       {
@@ -349,7 +394,7 @@
         kms: "152 621 km",
         year: "2016",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car5.jpg",
+        images: ["images/car5.jpg"],
         link: "https://www.standvirtual.com/carros/anuncio/citroen-c5-tourer-ver-2-0-bluehdi-seduction-j17-ID8PRV3m.html?isPreview=1"
       },
       {
@@ -358,7 +403,7 @@
         kms: "133 856 km",
         year: "2007",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car6.jpg",
+        images: ["images/car6.jpg"],
         link: "#"
       },
       {
@@ -367,7 +412,7 @@
         kms: "168 404 km",
         year: "2010",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car7.jpg",
+        images: ["images/car7.jpg"],
         link: "#"
       },
       {
@@ -376,7 +421,7 @@
         kms: "182 230km",
         year: "2002",
         extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        image: "images/car8.jpg",
+        images: ["images/car8.jpg"],
         link: "#"
       },
     ];
@@ -385,14 +430,53 @@
     const carouselContainer = document.querySelector('.carousel-container');
     const carShowcase = document.querySelector('.car-showcase');
 
-    // Generate carousel slides
+    // Helper to create image slider for a car (used in grid cards only)
+    function createImageSlider(images, carLink, alt, imgHeight = null) {
+      const slider = document.createElement('div');
+      slider.className = 'car-image-slider';
+      let currentImg = 0;
+
+      const img = document.createElement('img');
+      img.src = images[0];
+      img.alt = alt;
+      if (imgHeight) img.style.height = imgHeight;
+      img.onclick = () => { if (carLink && carLink !== "#") window.open(carLink, "_blank"); };
+      slider.appendChild(img);
+
+      if (images.length > 1) {
+        const left = document.createElement('button');
+        left.className = 'car-img-arrow left';
+        left.setAttribute('aria-label', 'Imagem anterior');
+        left.innerHTML = '&#10094;';
+        left.onclick = (e) => {
+          e.preventDefault();
+          currentImg = (currentImg - 1 + images.length) % images.length;
+          img.src = images[currentImg];
+        };
+        slider.appendChild(left);
+
+        const right = document.createElement('button');
+        right.className = 'car-img-arrow right';
+        right.setAttribute('aria-label', 'Próxima imagem');
+        right.innerHTML = '&#10095;';
+        right.onclick = (e) => {
+          e.preventDefault();
+          currentImg = (currentImg + 1) % images.length;
+          img.src = images[currentImg];
+        };
+        slider.appendChild(right);
+      }
+      return slider;
+    }
+
+    // Generate carousel slides (ONLY main image for each car)
     cars.forEach((car, index) => {
       const slide = document.createElement('div');
       slide.classList.add('carousel-slide');
       if(index === 0) slide.classList.add('active');
       slide.innerHTML = `
         <a href="${car.link}">
-          <img src="${car.image}" alt="${car.title}" />
+          <img src="${car.images[0]}" alt="${car.title}" />
         </a>
         <div class="car-title">${car.title}</div>
         <div class="car-price">${car.price}</div>
@@ -409,10 +493,9 @@
     cars.forEach(car => {
       const card = document.createElement('div');
       card.classList.add('car-card');
-      card.innerHTML = `
-        <a href="${car.link}">
-          <img src="${car.image}" alt="${car.title}" />
-        </a>
+      // Use image slider for each card (smaller image height)
+      card.appendChild(createImageSlider(car.images, car.link, car.title, '250px'));
+      card.innerHTML += `
         <div class="car-info">
           <div class="car-title">${car.title}</div>
           <span class="car-price">${car.price}</span>
@@ -447,6 +530,10 @@
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
     });
+
+    // Ensure carousel arrows are always vertically centered and visible after slides are added
+    window.addEventListener('resize', () => showSlide(currentIndex));
+    document.addEventListener('DOMContentLoaded', () => showSlide(currentIndex));
   </script>
 </body>
 </html>
