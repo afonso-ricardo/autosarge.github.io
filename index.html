@@ -61,7 +61,6 @@
       overflow: hidden;
       padding: 2rem 1.5rem;
       box-sizing: border-box;
-      /* Prevent horizontal overflow */
     }
 
     .carousel-slide {
@@ -167,7 +166,6 @@
       box-shadow: 0 0 6px rgba(33,150,243,0.9);
       z-index: 20;
       margin-top: 0;
-      /* Overlay image edge */
     }
 
     .carousel-arrow.left {
@@ -178,60 +176,52 @@
       right: 5%;
     }
 
-    /* Make sure arrows overlay image, not outside carousel */
-    .carousel-container {
+    /* Card image slider arrows */
+    .car-img-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(33,150,243,0.7);
+      border: none;
+      color: #fff;
+      font-size: 1.5em;
+      padding: 5px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+      box-shadow: 0 0 6px rgba(33,150,243,0.9);
+      z-index: 10;
+    }
+    .car-img-arrow.left {
+      left: 10px;
+    }
+    .car-img-arrow.right {
+      right: 10px;
+    }
+    .car-img-arrow:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .car-image-slider {
       position: relative;
-    }
-
-    .stock-subtitle {
-      color: #fafafa;
-      font-size: 2em;
-      margin: 0 0 22px 0;
-      text-align: center;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .click-hint {
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .click-hint span {
-      color: #fafafa;
-      opacity: 0.68;
-      font-size: 1em;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* Showcase grid */
-    .car-showcase {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      justify-content: center;
-      margin: 2rem 0;
-    }
-
-    .car-card {
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 1rem;
-      text-align: center;
-      background: #222;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    }
-
-    /* Car image slider for grid cards (smaller image) */
-    .car-card .car-image-slider img {
-      height: 250px;
       width: 100%;
       max-width: 400px;
+      margin: 0 auto 1rem;
     }
 
-    .car-card img:hover {
+    .car-image-slider img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+
+    .car-image-slider img:hover {
       transform: scale(1.04);
       box-shadow: 0 0 10px #2196f3;
     }
@@ -265,6 +255,9 @@
       .carousel-arrow.right {
         font-size: 2em;
         padding: 8px 12px;
+      }
+      .car-image-slider img {
+        height: 180px;
       }
     }
 
@@ -302,6 +295,9 @@
       .carousel-arrow.right {
         right: 10px;
         font-size: 2em;
+      }
+      .car-image-slider img {
+        height: 120px;
       }
     }
   </style>
@@ -485,8 +481,8 @@
     function createImageSlider(images, carLink, alt, imgHeight = null) {
       const slider = document.createElement('div');
       slider.className = 'car-image-slider';
-      let currentImg = 0;
 
+      // Create image element
       const img = document.createElement('img');
       img.src = images[0];
       img.alt = alt;
@@ -494,29 +490,38 @@
       img.onclick = () => { if (carLink && carLink !== "#") window.open(carLink, "_blank"); };
       slider.appendChild(img);
 
+      // Only show arrows if more than one image
       if (images.length > 1) {
+        let currentImg = 0;
+
+        // Left arrow
         const left = document.createElement('button');
         left.className = 'car-img-arrow left';
         left.setAttribute('aria-label', 'Imagem anterior');
         left.innerHTML = '&#10094;';
-        left.onclick = (e) => {
-          e.preventDefault();
-          currentImg = (currentImg - 1 + images.length) % images.length;
-          img.src = images[currentImg];
-        };
-        slider.appendChild(left);
 
+        // Right arrow
         const right = document.createElement('button');
         right.className = 'car-img-arrow right';
         right.setAttribute('aria-label', 'Próxima imagem');
         right.innerHTML = '&#10095;';
-        right.onclick = (e) => {
-          e.preventDefault();
+
+        // Event handlers
+        left.addEventListener('click', function(e) {
+          e.stopPropagation();
+          currentImg = (currentImg - 1 + images.length) % images.length;
+          img.src = images[currentImg];
+        });
+        right.addEventListener('click', function(e) {
+          e.stopPropagation();
           currentImg = (currentImg + 1) % images.length;
           img.src = images[currentImg];
-        };
+        });
+
+        slider.appendChild(left);
         slider.appendChild(right);
       }
+
       return slider;
     }
 
@@ -582,7 +587,6 @@
       showSlide(currentIndex);
     });
 
-    // Ensure carousel arrows are always vertically centered and visible after slides are added
     window.addEventListener('resize', () => showSlide(currentIndex));
     document.addEventListener('DOMContentLoaded', () => showSlide(currentIndex));
   </script>
