@@ -16,13 +16,11 @@
       background-position: top left, center;
       color: #f2f2f2;
     }
-
     .header {
       display: flex;
       align-items: center;
       margin-bottom: 32px;
     }
-
     .logo {
       width: 80px;
       height: 80px;
@@ -32,13 +30,11 @@
       border-radius: 8px;
       border: 1px solid #333;
     }
-
     .title {
       font-size: 3.5em;
       margin: 0;
       color: #fafafa;
     }
-
     .intro-box {
       background: #222;
       border-left: 6px solid #f44336;
@@ -48,8 +44,6 @@
       margin-bottom: 32px;
       font-size: 1.35em;
     }
-
-    /* Carousel container */
     .carousel-container {
       position: relative;
       max-width: 800px;
@@ -61,9 +55,7 @@
       overflow: hidden;
       padding: 2rem 1.5rem;
       box-sizing: border-box;
-      /* Prevent horizontal overflow */
     }
-
     .carousel-slide {
       display: none;
       text-align: center;
@@ -72,11 +64,9 @@
       transition: opacity 0.5s ease;
       position: relative;
     }
-
     .carousel-slide.active {
       display: block;
     }
-
     .carousel-slide img {
       width: 100%;
       max-width: 600px;
@@ -91,19 +81,16 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     .carousel-slide img:hover {
       transform: scale(1.04);
       box-shadow: 0 0 10px #2196f3;
     }
-
     .car-title {
       font-size: 1.4rem;
       font-weight: bold;
       margin-bottom: 0.4rem;
       color: #fafafa;
     }
-
     .car-price {
       font-size: 1.8em;
       font-weight: bold;
@@ -115,7 +102,6 @@
       margin-bottom: 0.8em;
       display: inline-block;
     }
-
     .car-details {
       font-size: 1.1rem;
       background: #232323;
@@ -130,27 +116,22 @@
       margin: 0 auto;
       line-height: 1.4;
     }
-
     .car-details span {
       display: block;
       margin: 6px 0;
       font-size: 1.1em;
     }
-
     .car-details strong {
       color: #b0b3b8;
       font-weight: bold;
       margin-right: 6px;
     }
-
     .car-details .extras {
       font-style: italic;
       font-size: 0.95em;
       color: #a0a3a8;
       margin-top: 10px;
     }
-
-    /* Carousel navigation arrows: CLOSER to image, properly centered vertically */
     .carousel-arrow {
       position: absolute;
       top: 50%;
@@ -167,22 +148,16 @@
       box-shadow: 0 0 6px rgba(33,150,243,0.9);
       z-index: 20;
       margin-top: 0;
-      /* Overlay image edge */
     }
-
     .carousel-arrow.left {
       left: 5%;
     }
-
     .carousel-arrow.right {
       right: 5%;
     }
-
-    /* Make sure arrows overlay image, not outside carousel */
     .carousel-container {
       position: relative;
     }
-
     .stock-subtitle {
       color: #fafafa;
       font-size: 2em;
@@ -191,12 +166,10 @@
       font-weight: 600;
       letter-spacing: 1px;
     }
-
     .click-hint {
       text-align: center;
       margin-bottom: 8px;
     }
-
     .click-hint span {
       color: #fafafa;
       opacity: 0.68;
@@ -205,8 +178,6 @@
       align-items: center;
       gap: 4px;
     }
-
-    /* Showcase grid */
     .car-showcase {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -214,7 +185,6 @@
       justify-content: center;
       margin: 2rem 0;
     }
-
     .car-card {
       border: 1px solid #333;
       border-radius: 12px;
@@ -223,32 +193,92 @@
       background: #222;
       box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
-
-    /* Car image slider for grid cards (smaller image) */
     .car-card .car-image-slider img {
       height: 250px;
       width: 100%;
       max-width: 400px;
+      cursor: pointer;
     }
-
     .car-card img:hover {
       transform: scale(1.04);
       box-shadow: 0 0 10px #2196f3;
     }
-
     .car-info {
       margin-top: 1rem;
     }
-
     a {
       color: #2196f3;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
+    /* Lightbox Modal Styles */
+    #lightbox-modal {
+      position: fixed;
+      z-index: 10000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      display: none;
+    }
+    #lightbox-modal.active { display: block; }
+    .lightbox-overlay {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.87);
+      cursor: pointer;
+    }
+    .lightbox-content {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      background: #222;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      max-width: 90vw;
+      max-height: 90vh;
+      flex-direction: row;
+    }
+    .lightbox-img {
+      max-width: 70vw;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+      margin: 0 24px;
+      box-shadow: 0 2px 16px rgba(33,150,243,0.25);
+    }
+    .lightbox-arrow {
+      background: rgba(33,150,243,0.7);
+      border: none;
+      color: #fff;
+      font-size: 2.8em;
+      padding: 10px 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 10px #2196f3;
+    }
+    .lightbox-arrow.left { margin-right: 0; }
+    .lightbox-arrow.right { margin-left: 0; }
+    .lightbox-close {
+      position: absolute;
+      top: 8px; right: 12px;
+      background: rgba(255,255,255,0.16);
+      color: #fafafa;
+      border: none;
+      font-size: 2.5em;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 48px; height: 48px;
+      z-index: 2;
+    }
     @media (max-width: 900px) {
       .car-showcase {
         grid-template-columns: 1fr;
@@ -266,8 +296,9 @@
         font-size: 2em;
         padding: 8px 12px;
       }
+      .lightbox-img { max-width: 90vw; max-height: 60vh; }
+      .lightbox-content { padding: 8px; }
     }
-
     @media (max-width: 600px) {
       body {
         margin: 8px;
@@ -303,6 +334,10 @@
         right: 10px;
         font-size: 2em;
       }
+      .lightbox-img { max-width: 98vw; max-height: 45vh; }
+      .lightbox-content { flex-direction: column; align-items: center; }
+      .lightbox-arrow { font-size: 2em; padding: 6px 10px; }
+      .lightbox-close { font-size: 2em; width: 36px; height: 36px; }
     }
   </style>
 </head>
@@ -343,6 +378,17 @@
     <p><strong>Telemóvel 1:</strong> <a href="tel:+351912251080">+351 912 251 080</a></p>
     <p><strong>Telemóvel 2:</strong> <a href="tel:+351918754848">+351 918 754 848</a></p>
     <p><strong>Email:</strong> <a href="mailto:autosarge2005@gmail.com">autosarge2005@gmail.com</a></p>
+  </div>
+
+  <!-- Lightbox Modal (can also be injected via JS, but here for clarity) -->
+  <div id="lightbox-modal">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-arrow left" aria-label="Imagem anterior">&#10094;</button>
+      <img class="lightbox-img" src="" alt="Carro em destaque" />
+      <button class="lightbox-arrow right" aria-label="Próxima imagem">&#10095;</button>
+      <button class="lightbox-close" aria-label="Fechar">&times;</button>
+    </div>
   </div>
 
   <script>
@@ -490,7 +536,11 @@
       img.src = images[0];
       img.alt = alt;
       if (imgHeight) img.style.height = imgHeight;
-      img.onclick = () => { if (carLink && carLink !== "#") window.open(carLink, "_blank"); };
+      // Lightbox modal open on img click
+      img.onclick = (e) => {
+        e.stopPropagation();
+        window.openLightboxModal(images, currentImg);
+      };
       slider.appendChild(img);
 
       if (images.length > 1) {
@@ -604,9 +654,53 @@
       showSlide(currentIndex);
     });
 
-    // Ensure carousel arrows are always vertically centered and visible after slides are added
     window.addEventListener('resize', () => showSlide(currentIndex));
     document.addEventListener('DOMContentLoaded', () => showSlide(currentIndex));
+
+    // Lightbox/modal logic
+    (function() {
+      const modal = document.getElementById('lightbox-modal');
+      const overlay = modal.querySelector('.lightbox-overlay');
+      const img = modal.querySelector('.lightbox-img');
+      const leftBtn = modal.querySelector('.lightbox-arrow.left');
+      const rightBtn = modal.querySelector('.lightbox-arrow.right');
+      const closeBtn = modal.querySelector('.lightbox-close');
+
+      let currentImages = [];
+      let currentImgIndex = 0;
+
+      function showModal(images, startIndex) {
+        currentImages = images;
+        currentImgIndex = startIndex;
+        img.src = currentImages[currentImgIndex];
+        modal.classList.add('active');
+        modal.style.display = 'block';
+      }
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+        img.src = '';
+        currentImages = [];
+        currentImgIndex = 0;
+      }
+      function showImage(idx) {
+        if (!currentImages.length) return;
+        currentImgIndex = (idx + currentImages.length) % currentImages.length;
+        img.src = currentImages[currentImgIndex];
+      }
+      leftBtn.onclick = function(e) { e.stopPropagation(); showImage(currentImgIndex - 1); };
+      rightBtn.onclick = function(e) { e.stopPropagation(); showImage(currentImgIndex + 1); };
+      closeBtn.onclick = function(e) { e.stopPropagation(); closeModal(); };
+      overlay.onclick = closeModal;
+      window.addEventListener('keydown', function(e) {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') showImage(currentImgIndex - 1);
+        if (e.key === 'ArrowRight') showImage(currentImgIndex + 1);
+      });
+      // Expose globally
+      window.openLightboxModal = showModal;
+    })();
   </script>
 </body>
 </html>
