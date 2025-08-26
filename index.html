@@ -1,706 +1,262 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-PT">
 <head>
-  <meta charset="UTF-8" />
-  <title>Auto Sarge</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-image: 
-        url('https://designergpt.replit.app/assets/texture-7aef4a5a.png'),
-        linear-gradient(135deg, #111 0%, #222 100%);
-      background-repeat: repeat, no-repeat;
-      background-size: auto, cover;
-      background-position: top left, center;
-      color: #f2f2f2;
-    }
-    .header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin-right: 24px;
-      background: #222;
-      border-radius: 8px;
-      border: 1px solid #333;
-    }
-    .title {
-      font-size: 3.5em;
-      margin: 0;
-      color: #fafafa;
-    }
-    .intro-box {
-      background: #222;
-      border-left: 6px solid #f44336;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.22);
-      padding: 24px;
-      margin-bottom: 32px;
-      font-size: 1.35em;
-    }
-    .carousel-container {
-      position: relative;
-      max-width: 800px;
-      width: 100%;
-      margin: 3rem auto 4rem;
-      background: #222;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.6);
-      overflow: hidden;
-      padding: 2rem 1.5rem;
-      box-sizing: border-box;
-    }
-    .carousel-slide {
-      display: none;
-      text-align: center;
-      padding: 1rem;
-      color: #fafafa;
-      transition: opacity 0.5s ease;
-      position: relative;
-    }
-    .carousel-slide.active {
-      display: block;
-    }
-    .carousel-slide img {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      max-height: 375px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin-bottom: 1rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .carousel-slide img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 10px #2196f3;
-    }
-    .car-title {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 0.4rem;
-      color: #fafafa;
-    }
-    .car-price {
-      font-size: 1.8em;
-      font-weight: bold;
-      color: #fff;
-      background: #181818;
-      border-radius: 6px;
-      padding: 6px 20px;
-      box-shadow: 0 2px 8px rgba(255,255,255,0.15);
-      margin-bottom: 0.8em;
-      display: inline-block;
-    }
-    .car-details {
-      font-size: 1.1rem;
-      background: #232323;
-      border-radius: 8px;
-      padding: 14px 24px;
-      font-weight: 500;
-      box-shadow: 0 1px 6px rgba(33,150,243,0.09);
-      letter-spacing: 0.5px;
-      text-align: left;
-      color: #d3d6db;
-      max-width: 400px;
-      margin: 0 auto;
-      line-height: 1.4;
-    }
-    .car-details span {
-      display: block;
-      margin: 6px 0;
-      font-size: 1.1em;
-    }
-    .car-details strong {
-      color: #b0b3b8;
-      font-weight: bold;
-      margin-right: 6px;
-    }
-    .car-details .extras {
-      font-style: italic;
-      font-size: 0.95em;
-      color: #a0a3a8;
-      margin-top: 10px;
-    }
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(33,150,243,0.7);
-      border: none;
-      color: #fff;
-      font-size: 2em;
-      padding: 8px 14px;
-      border-radius: 50%;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s;
-      box-shadow: 0 0 6px rgba(33,150,243,0.9);
-      z-index: 20;
-      margin-top: 0;
-    }
-    .carousel-arrow.left {
-      left: 5%;
-    }
-    .carousel-arrow.right {
-      right: 5%;
-    }
-    .carousel-container {
-      position: relative;
-    }
-    .stock-subtitle {
-      color: #fafafa;
-      font-size: 2em;
-      margin: 0 0 22px 0;
-      text-align: center;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    .click-hint {
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .click-hint span {
-      color: #fafafa;
-      opacity: 0.68;
-      font-size: 1em;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .car-showcase {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      justify-content: center;
-      margin: 2rem 0;
-    }
-    .car-card {
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 1rem;
-      text-align: center;
-      background: #222;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    }
-    .car-card .car-image-slider img {
-      height: 250px;
-      width: 100%;
-      max-width: 400px;
-      cursor: pointer;
-    }
-    .car-card img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 10px #2196f3;
-    }
-    .car-info {
-      margin-top: 1rem;
-    }
-    a {
-      color: #2196f3;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    /* Lightbox Modal Styles */
-    #lightbox-modal {
-      position: fixed;
-      z-index: 10000;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      display: none;
-    }
-    #lightbox-modal.active { display: block; }
-    .lightbox-overlay {
-      position: absolute;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.87);
-      cursor: pointer;
-    }
-    .lightbox-content {
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      background: #222;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      max-width: 90vw;
-      max-height: 90vh;
-      flex-direction: row;
-    }
-    .lightbox-img {
-      max-width: 70vw;
-      max-height: 70vh;
-      object-fit: contain;
-      border-radius: 12px;
-      margin: 0 24px;
-      box-shadow: 0 2px 16px rgba(33,150,243,0.25);
-    }
-    .lightbox-arrow {
-      background: rgba(33,150,243,0.7);
-      border: none;
-      color: #fff;
-      font-size: 2.8em;
-      padding: 10px 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      user-select: none;
-      margin: 0;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 0 10px #2196f3;
-    }
-    .lightbox-arrow.left { margin-right: 0; }
-    .lightbox-arrow.right { margin-left: 0; }
-    .lightbox-close {
-      position: absolute;
-      top: 8px; right: 12px;
-      background: rgba(255,255,255,0.16);
-      color: #fafafa;
-      border: none;
-      font-size: 2.5em;
-      border-radius: 50%;
-      cursor: pointer;
-      width: 48px; height: 48px;
-      z-index: 2;
-    }
-    @media (max-width: 900px) {
-      .car-showcase {
-        grid-template-columns: 1fr;
-      }
-      .carousel-container {
-        max-width: 100vw;
-      }
-      .carousel-slide img {
-        max-width: 100vw;
-        height: auto;
-        max-height: 200px;
-      }
-      .carousel-arrow.left,
-      .carousel-arrow.right {
-        font-size: 2em;
-        padding: 8px 12px;
-      }
-      .lightbox-img { max-width: 90vw; max-height: 60vh; }
-      .lightbox-content { padding: 8px; }
-    }
-    @media (max-width: 600px) {
-      body {
-        margin: 8px;
-      }
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .logo {
-        margin-bottom: 12px;
-        margin-right: 0;
-      }
-      .car-showcase {
-        gap: 1rem;
-      }
-      .carousel-container {
-        padding: 0.5rem 0.3rem;
-        max-width: 100vw;
-        border-radius: 8px;
-      }
-      .carousel-slide img {
-        max-width: 100vw;
-        width: 100vw;
-        height: auto;
-        max-height: 180px;
-        margin-bottom: 0.4em;
-      }
-      .carousel-arrow.left {
-        left: 10px;
-        font-size: 2em;
-      }
-      .carousel-arrow.right {
-        right: 10px;
-        font-size: 2em;
-      }
-      .lightbox-img { max-width: 98vw; max-height: 45vh; }
-      .lightbox-content { flex-direction: column; align-items: center; }
-      .lightbox-arrow { font-size: 2em; padding: 6px 10px; }
-      .lightbox-close { font-size: 2em; width: 36px; height: 36px; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Stand de Carros Usados e Seminovos. Encontre o seu próximo carro com qualidade garantida.">
+  <title>AutoSarge - Carros Usados e Seminovos</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AutoSarge">
+  <meta property="og:title" content="AutoSarge - Carros Usados e Seminovos">
+  <meta property="og:description" content="Stand de Carros Usados e Seminovos. Encontre o seu próximo carro com qualidade garantida.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:url" content="https://autosarge.pt/">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AutoSarge - Carros Usados e Seminovos">
+  <meta name="twitter:description" content="Stand de Carros Usados e Seminovos. Encontre o seu próximo carro com qualidade garantida.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://autosarge.pt/" />
+  <link id="siteFavicon" rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="header">
-    <img src="images/logo.png" alt="Organization Logo" class="logo" />
-    <h1 class="title">Auto Sarge</h1>
-  </div>
-
-  <div class="intro-box">
-    <p>
-      Autosarge uma empresa que se dedica à mais de 30 anos ao comercio de viaturas usadas,
-      onde o foco é o atendimento de excelência e a completa satisfação do cliente.
-      Não hesite em nos contactar a saber do nosso stock e caso pretenda somente vender a sua viatura,
-      podemos o ajudar em aconselhamento especializado.
-    </p>
-  </div>
-
-  <div class="carousel-container" aria-label="Carros em destaque">
-    <button class="carousel-arrow left" aria-label="Carro anterior">&#10094;</button>
-    <button class="carousel-arrow right" aria-label="Próximo carro">&#10095;</button>
-    <!-- Carousel slides will be generated here -->
-  </div>
-
-  <div class="stock-subtitle">Carros no stock</div>
-
-  <div class="click-hint">
-    <span>🔍 Clique numa imagem para ver mais detalhes sobre o carro.</span>
-  </div>
-
-  <div class="car-showcase">
-    <!-- Car cards will be generated here -->
-  </div>
-
-  <h2 style="color: #fafafa; margin-top: 0; margin-bottom: 18px;">Contatos</h2>
-
-  <div class="contact-simple">
-    <p><strong>Telemóvel 1:</strong> <a href="tel:+351912251080">+351 912 251 080</a></p>
-    <p><strong>Telemóvel 2:</strong> <a href="tel:+351918754848">+351 918 754 848</a></p>
-    <p><strong>Email:</strong> <a href="mailto:autosarge2005@gmail.com">autosarge2005@gmail.com</a></p>
-  </div>
-
-  <!-- Lightbox Modal (can also be injected via JS, but here for clarity) -->
-  <div id="lightbox-modal">
-    <div class="lightbox-overlay"></div>
-    <div class="lightbox-content">
-      <button class="lightbox-arrow left" aria-label="Imagem anterior">&#10094;</button>
-      <img class="lightbox-img" src="" alt="Carro em destaque" />
-      <button class="lightbox-arrow right" aria-label="Próxima imagem">&#10095;</button>
-      <button class="lightbox-close" aria-label="Fechar">&times;</button>
-    </div>
-  </div>
-
-  <script>
-    // Cars data: "images" array for each car, first image is main image
-    const cars = [
-      {
-        title: "Ford Fusion 1.25 X-Trend",
-        price: "3.590€",
-        kms: "140 677 km",
-        year: "2006",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car1.jpg",
-          "images/car1_extra2.jpg",
-          "images/car1_extra3.jpg",
-          "images/car1_extra4.jpg",
-          "images/car1_extra5.jpg",
-          "images/car1_extra6.jpg",
-          "images/car1_extra7.jpg",
-          "images/car1_extra8.jpg",
-          "images/car1_extra9.jpg",
-          "images/car1_extra10.jpg",
-          "images/car1_extra11.jpg",
-          "images/car1_extra12.jpg",
-          "images/car1_extra13.jpg",
-          "images/car1_extra14.jpg",
-          "images/car1_extra15.jpg",
-          "images/car1_extra16.jpg",
-          "images/car1_extra17.jpg",
-          "images/car1_extra18.jpg",
-          "images/car1_extra19.jpg",
-          "images/car1_extra20.jpg",
-          "images/car1_extra21.jpg",
-          "images/car1_extra22.jpg",
-          "images/car1_extra23.jpg",
-          "images/car1_extra24.jpg",
-          "images/car1_extra25.jpg",
-        ],
-        link: "#"
-      },
-      {
-        title: "Opel Astra 1.7 CDTi Cosmo",
-        price: "5.890€",
-        kms: "239 400 km",
-        year: "2011",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car2.jpg",
-          "images/car2_extra1.jpg",
-          "images/car2_extra2.jpg"
-        ],
-        link: "#"
-      },
-      {
-        title: "Peugeot Peugeot Partner 1.6 HDi 100 Cv 3 Lug. Premier * Automática *",
-        price: "9.890€",
-        kms: "218 541 km",
-        year: "2017",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car3.jpg",
-          "images/car3_extra1.jpg",
-          "images/car3_extra2.jpg"
-        ],
-        link: "#"
-      },
-      {
-        title: "MINI 3 Portas One 1.4 D",
-        price: "3.990€",
-        kms: "343 211 km",
-        year: "2004",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car4.jpg",
-          "images/car4_extra1.jpg",
-          "images/car4_extra2.jpg"
-        ],
-        link: "#"
-      },
-      {
-        title: "Citroën C5 Tourer 2.0 BlueHDi Seduction J17",
-        price: "9.990€",
-        kms: "152 621 km",
-        year: "2016",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car5.jpg",
-          "images/car5_extra1.jpg",
-          "images/car5_extra2.jpg"
-        ],
-        link: "#"
-      },
-      {
-        title: "Toyota Yaris 1.0 VVT-i Sol High Pack MMT",
-        price: "VENDIDO",
-        kms: "133 856 km",
-        year: "2007",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car6.jpg",
-          "images/car6_extra1.jpg",
-          "images/car6_extra2.jpg"
-        ],
-        link: "#"
-      },
-      {
-        title: "Toyota Yaris 1.0 VVT-i Sport+VSC",
-        price: "VENDIDO",
-        kms: "168 404 km",
-        year: "2010",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car7.jpg",
-          "images/car7_extra1.jpg",
-          "images/car7_extra2.jpg"
-        ],
-        link: "#"
-      },
-      {
-        title: "Toyota Corolla S/D 1.4 Sol AC",
-        price: "VENDIDO",
-        kms: "182 230km",
-        year: "2002",
-        extras: "Vários extras sob consulta (Clique na imagem para ver mais detalhes)",
-        images: [
-          "images/car8.jpg",
-          "images/car8_extra1.jpg",
-          "images/car8_extra2.jpg"
-        ],
-        link: "#"
-      },
-    ];
-
-    // Select containers
-    const carouselContainer = document.querySelector('.carousel-container');
-    const carShowcase = document.querySelector('.car-showcase');
-
-    // Helper to create image slider for a car (used in grid cards only)
-    function createImageSlider(images, carLink, alt, imgHeight = null) {
-      const slider = document.createElement('div');
-      slider.className = 'car-image-slider';
-      let currentImg = 0;
-
-      const img = document.createElement('img');
-      img.src = images[0];
-      img.alt = alt;
-      if (imgHeight) img.style.height = imgHeight;
-      // Lightbox modal open on img click
-      img.onclick = (e) => {
-        e.stopPropagation();
-        window.openLightboxModal(images, currentImg);
-      };
-      slider.appendChild(img);
-
-      if (images.length > 1) {
-        const left = document.createElement('button');
-        left.className = 'car-img-arrow left';
-        left.setAttribute('aria-label', 'Imagem anterior');
-        left.innerHTML = '&#10094;';
-        left.onclick = (e) => {
-          e.preventDefault();
-          currentImg = (currentImg - 1 + images.length) % images.length;
-          img.src = images[currentImg];
-        };
-        slider.appendChild(left);
-
-        const right = document.createElement('button');
-        right.className = 'car-img-arrow right';
-        right.setAttribute('aria-label', 'Próxima imagem');
-        right.innerHTML = '&#10095;';
-        right.onclick = (e) => {
-          e.preventDefault();
-          currentImg = (currentImg + 1) % images.length;
-          img.src = images[currentImg];
-        };
-        slider.appendChild(right);
-      }
-      return slider;
-    }
-
-    // Generate carousel slides (ONLY main image for each car)
-    cars.forEach((car, index) => {
-      const slide = document.createElement('div');
-      slide.classList.add('carousel-slide');
-      if(index === 0) slide.classList.add('active');
-      slide.innerHTML = `
-        <a href="${car.link}">
-          <img src="${car.images[0]}" alt="${car.title}" />
-        </a>
-        <div class="car-title">${car.title}</div>
-        <div class="car-price">${car.price}</div>
-        <div class="car-details">
-          <span><strong>Quilómetros:</strong> ${car.kms}</span>
-          <span><strong>Ano:</strong> ${car.year}</span>
-          <span class="extras">${car.extras}</span>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img class="logo-img" src="images/logo.png" alt="AutoSarge Logo">
+          <div class="logo-text">
+            <h1>AutoSarge</h1>
+            <p>Carros Usados e Seminovos</p>
+          </div>
         </div>
-      `;
-      carouselContainer.appendChild(slide);
-    });
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#inicio" class="active">Início</a></li>
+            <li><a href="#veiculos">Veículos</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li class="contact-inline">
+              <div class="nav-phone-dropdown">
+                <a href="#" id="navPhoneTrigger" class="nav-contact trigger" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-phone"></i> Ligar <i class="fas fa-chevron-down caret"></i>
+                </a>
+                <div class="phone-menu" role="menu">
+                  <a id="navPhone" href="tel:+351123456789" class="nav-contact" role="menuitem"><i class="fas fa-phone"></i> +351 123 456 789</a>
+                  <a id="navPhone2" href="#" class="nav-contact" role="menuitem" style="display:none"><i class="fas fa-phone"></i> </a>
+                </div>
+              </div>
+              <a id="navEmail" href="mailto:autosarge2005@gmail.com" class="nav-contact"><i class="fas fa-envelope"></i> autosarge2005@gmail.com</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    // Generate car cards (FIXED VERSION: only use createElement and appendChild)
-    cars.forEach(car => {
-      const card = document.createElement('div');
-      card.classList.add('car-card');
+  <!-- Hero Section -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-split">
+        <div class="hero-left">
+          <h1>Encontre o carro dos seus sonhos</h1>
+          <p>As melhores ofertas em carros usados e seminovos.</p>
+          <a href="#veiculos" class="btn btn-primary">Ver Veículos</a>
+        </div>
+        <div class="hero-right">
+          <img src="images/logo.png" alt="Logo AutoSarge" />
+        </div>
+      </div>
+    </div>
+  </section>
 
-      // Use image slider for each card (smaller image height)
-      card.appendChild(createImageSlider(car.images, car.link, car.title, '250px'));
+  <!-- Featured Cars Carousel -->
+  <section class="featured-carousel-section">
+    <div class="container">
+      <h2 class="section-title">Destaques</h2>
+      <div class="carousel-container">
+        <button class="carousel-arrow carousel-prev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel-track">
+          <!-- Slides will be injected by script.js for featured cars -->
+        </div>
+        
+        <button class="carousel-arrow carousel-next" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <div class="carousel-dots">
+        <!-- Dots will be injected by script.js -->
+      </div>
+    </div>
+  </section>
 
-      const infoDiv = document.createElement('div');
-      infoDiv.className = 'car-info';
 
-      const titleDiv = document.createElement('div');
-      titleDiv.className = 'car-title';
-      titleDiv.textContent = car.title;
-      infoDiv.appendChild(titleDiv);
+  <!-- Featured Cars -->
+  <section class="featured-cars" id="veiculos">
+    <div class="container">
+      <h2 class="section-title">Veículos em Destaque</h2>
+      <div class="cars-grid" id="featured-cars">
+        <!-- Cars will be loaded by JavaScript -->
+        <div class="loading">A carregar veículos...</div>
+      </div>
+    </div>
+  </section>
 
-      const priceSpan = document.createElement('span');
-      priceSpan.className = 'car-price';
-      priceSpan.textContent = car.price;
-      infoDiv.appendChild(priceSpan);
+  <!-- Sold Cars Carousel (after the car cards grid) -->
+  <section class="featured-carousel-section" id="vendidos-carousel">
+    <div class="container">
+      <h2 class="section-title">Vendidos</h2>
+      <div class="carousel-container">
+        <button class="carousel-arrow carousel-prev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
 
-      const detailsDiv = document.createElement('div');
-      detailsDiv.className = 'car-details';
+        <div class="carousel-track">
+          <!-- Slides will be injected by script.js for sold cars -->
+        </div>
 
-      const kmsSpan = document.createElement('span');
-      kmsSpan.innerHTML = `<strong>Quilómetros:</strong> ${car.kms}`;
-      detailsDiv.appendChild(kmsSpan);
+        <button class="carousel-arrow carousel-next" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
 
-      const yearSpan = document.createElement('span');
-      yearSpan.innerHTML = `<strong>Ano:</strong> ${car.year}`;
-      detailsDiv.appendChild(yearSpan);
+      <div class="carousel-dots">
+        <!-- Dots will be injected by script.js -->
+      </div>
+    </div>
+  </section>
 
-      const extrasSpan = document.createElement('span');
-      extrasSpan.textContent = car.extras;
-      detailsDiv.appendChild(extrasSpan);
+  <!-- About Section -->
+  <section class="about-section" id="sobre">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Sobre Nós</h2>
+          <p>Somos uma equipa apaixonada por automóveis, dedicada a ajudar os nossos clientes a encontrar o veículo perfeito. Com anos de experiência no mercado, garantimos a qualidade e a procedência de todos os nossos veículos.</p>
+          <ul class="features-list">
+            <li><i class="fas fa-check"></i> Veículos rigorosamente inspecionados</li>
+            <li><i class="fas fa-check"></i> Financiamento disponível</li>
+            <li><i class="fas fa-check"></i> Garantia em vários veículos</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sobre Nós">
+        </div>
+      </div>
+    </div>
+  </section>
 
-      infoDiv.appendChild(detailsDiv);
+  <!-- Services Section -->
+  <section class="services-section" id="servicos">
+    <div class="container">
+      <h2 class="section-title">Nossos Serviços</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-car"></i>
+          <h3>Venda de Viaturas</h3>
+          <p>Ampla seleção de carros usados e seminovos das melhores marcas.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-search-dollar"></i>
+          <h3>Avaliação</h3>
+          <p>Avaliação profissional do seu veículo atual para troca ou venda.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-hand-holding-usd"></i>
+          <h3>Financiamento</h3>
+          <p>Soluções de financiamento personalizadas para a sua compra.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      card.appendChild(infoDiv);
+  <!-- Contact Section -->
+  <section class="contact-section" id="contato">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>Entre em Contato</h2>
+          <p>Estamos à sua disposição para esclarecer todas as suas dúvidas.</p>
+          <div class="contact-details">
+            <p><i class="fas fa-map-marker-alt"></i> Sarge, Torres Vedras</p>
+            <p><i class="fas fa-phone"></i> +351 918 754 848</p>
+            <p id="contactPhone2" style="display:none"><i class="fas fa-phone"></i> </p>
+            <p><i class="fas fa-envelope"></i> autosarge2005@gmail.com</p>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Envie-nos uma mensagem</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Nome" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder="Telefone" required>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" rows="4" placeholder="Mensagem" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      carShowcase.appendChild(card);
-    });
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>AutoSarge</h3>
+          <p>Carros Usados</p>
+        </div>
+        <div class="footer-links">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#veiculos">Veículos</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contato</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Sarge, Torres Vedras</p>
+          <p><i class="fas fa-phone"></i> +351 918 754 848</p>
+          <p id="footerPhone2" style="display:none"><i class="fas fa-phone"></i> </p>
+          <p><i class="fas fa-envelope"></i> autosarge2005@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AutoSarge. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
 
-    // Carousel navigation logic
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.querySelector('.carousel-arrow.left');
-    const nextBtn = document.querySelector('.carousel-arrow.right');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      showSlide(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    });
-
-    window.addEventListener('resize', () => showSlide(currentIndex));
-    document.addEventListener('DOMContentLoaded', () => showSlide(currentIndex));
-
-    // Lightbox/modal logic
-    (function() {
-      const modal = document.getElementById('lightbox-modal');
-      const overlay = modal.querySelector('.lightbox-overlay');
-      const img = modal.querySelector('.lightbox-img');
-      const leftBtn = modal.querySelector('.lightbox-arrow.left');
-      const rightBtn = modal.querySelector('.lightbox-arrow.right');
-      const closeBtn = modal.querySelector('.lightbox-close');
-
-      let currentImages = [];
-      let currentImgIndex = 0;
-
-      function showModal(images, startIndex) {
-        currentImages = images;
-        currentImgIndex = startIndex;
-        img.src = currentImages[currentImgIndex];
-        modal.classList.add('active');
-        modal.style.display = 'block';
-      }
-      function closeModal() {
-        modal.classList.remove('active');
-        modal.style.display = 'none';
-        img.src = '';
-        currentImages = [];
-        currentImgIndex = 0;
-      }
-      function showImage(idx) {
-        if (!currentImages.length) return;
-        currentImgIndex = (idx + currentImages.length) % currentImages.length;
-        img.src = currentImages[currentImgIndex];
-      }
-      leftBtn.onclick = function(e) { e.stopPropagation(); showImage(currentImgIndex - 1); };
-      rightBtn.onclick = function(e) { e.stopPropagation(); showImage(currentImgIndex + 1); };
-      closeBtn.onclick = function(e) { e.stopPropagation(); closeModal(); };
-      overlay.onclick = closeModal;
-      window.addEventListener('keydown', function(e) {
-        if (!modal.classList.contains('active')) return;
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft') showImage(currentImgIndex - 1);
-        if (e.key === 'ArrowRight') showImage(currentImgIndex + 1);
-      });
-      // Expose globally
-      window.openLightboxModal = showModal;
-    })();
-  </script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
