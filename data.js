@@ -187,7 +187,7 @@ window.SITE_DATA = {
       year: 2010,
       price: 8790,
       sold: false,
-      hidden: true,
+      hidden: false,
       mileage: 168563,
       fuel: 'Híbrido (Gasolina)',
       transmission: 'Automático',
