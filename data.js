@@ -183,13 +183,13 @@ window.SITE_DATA = {
     },
     {
       id: 5,
-      name: 'Tesla Model 3',
-      year: 2022,
-      price: 46900,
+      name: 'Toyota Prius 1.8 Premium',
+      year: 2010,
+      price: 8790,
       sold: false,
       hidden: true,
-      mileage: 12000,
-      fuel: 'Elétrico',
+      mileage: 168563,
+      fuel: 'Híbrido (Gasolina)',
       transmission: 'Automático',
       images: [
         'images/car5.jpg',
@@ -216,9 +216,19 @@ window.SITE_DATA = {
         'images/car5_extra22.jpg',
         'images/car5_extra23.jpg',
         'images/car5_extra24.jpg',
-        'images/car5_extra25.jpg'
+        'images/car5_extra25.jpg',
+        'images/car5_extra26.jpg',
+        'images/car5_extra27.jpg',
+        'images/car5_extra28.jpg',
+        'images/car5_extra29.jpg',
+        'images/car5_extra30.jpg',
+        'images/car5_extra31.jpg',
+        'images/car5_extra32.jpg',
+        'images/car5_extra33.jpg',
+        'images/car5_extra34.jpg',
+        'images/car5_extra35.jpg',
       ],
-      features: ['Autopilot', 'Navegação', 'Câmara 360º', 'Aquecimento Bancos']
+      features: ['']
     },
     {
       id: 6,
