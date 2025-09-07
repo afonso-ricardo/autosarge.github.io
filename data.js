@@ -192,7 +192,7 @@ window.SITE_DATA = {
       fuel: 'Híbrido (Gasolina)',
       transmission: 'Automático',
       images: [
-        'images/car5.jpg',
+        'images/car5-new.jpg',
         'images/car5_extra2.jpg',
         'images/car5_extra3.jpg',
         'images/car5_extra4.jpg',
@@ -228,7 +228,7 @@ window.SITE_DATA = {
         'images/car5_extra34.jpg',
         'images/car5_extra35.jpg',
       ],
-      features: 
+      features: ['Híbrido']
     },
     {
       id: 6,
