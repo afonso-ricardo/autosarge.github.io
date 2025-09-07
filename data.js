@@ -241,7 +241,7 @@ window.SITE_DATA = {
       fuel: 'Diesel',
       transmission: 'Manual',
       images: [
-        'images/car6.jpg',
+        'images/car6-new.jpg',
         'images/car6_extra2.jpg',
         'images/car6_extra3.jpg',
         'images/car6_extra4.jpg',
