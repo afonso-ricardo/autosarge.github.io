@@ -228,7 +228,7 @@ window.SITE_DATA = {
         'images/car5_extra34.jpg',
         'images/car5_extra35.jpg',
       ],
-      features: ['']
+      features: 
     },
     {
       id: 6,
