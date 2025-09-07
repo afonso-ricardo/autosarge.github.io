@@ -232,13 +232,13 @@ window.SITE_DATA = {
     },
     {
       id: 6,
-      name: 'Ford Focus ST',
-      year: 2018,
-      price: 19900,
+      name: 'Volkswagen Transporter 2.5 Tdi 102cv Califórnia / Westfalia',
+      year: 1997,
+      price: 18990,
       sold: false,
-      hidden: true,
-      mileage: 62000,
-      fuel: 'Gasolina',
+      hidden: false,
+      mileage: 340000,
+      fuel: 'Diesel',
       transmission: 'Manual',
       images: [
         'images/car6.jpg',
@@ -258,16 +258,8 @@ window.SITE_DATA = {
         'images/car6_extra15.jpg',
         'images/car6_extra16.jpg',
         'images/car6_extra17.jpg',
-        'images/car6_extra18.jpg',
-        'images/car6_extra19.jpg',
-        'images/car6_extra20.jpg',
-        'images/car6_extra21.jpg',
-        'images/car6_extra22.jpg',
-        'images/car6_extra23.jpg',
-        'images/car6_extra24.jpg',
-        'images/car6_extra25.jpg'
       ],
-      features: ['Bluetooth', 'Cruise Control', 'Sistema Som', 'Sensor Estacionamento']
+      features: ['Painel Solar', 'Discos novos + pastilhas novas', 'Distribuição e Bomba de Água nova', 'Embraiagem e bomba nova', 'Bateria Auxiliar nova', 'Interiores de origem', 'Fogão a Gás com inspeção técnica aprovada', 'Frigorífico a funcionar corretamente']
     },
     {
       id: 7,
